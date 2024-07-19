@@ -1,7 +1,6 @@
-import { Button as ShadcnButton } from "@/components/shadcn/button";
 import { default as MuiButton } from "@/components/mui/button";
 import { default as PrimeReactButton } from "@/components/primereact/button";
-import Image from "next/image";
+import { Button as ShadcnButton } from "@/components/shadcn/button";
 
 export default function Home() {
   return (
