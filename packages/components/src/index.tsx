@@ -1,5 +1,6 @@
 export { default as MuiButton } from "./components/mui/button";
 export {
+  Button,
   Button as ShadcnButton,
   type ButtonProps,
   buttonVariants,
@@ -16,3 +17,12 @@ export {
   TableHeader,
   TableRow,
 } from "./components/shadcn/table";
+export {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./components/shadcn/card";
+export { Label } from "./components/shadcn/label";
+export { Input, type InputProps } from "./components/shadcn/input";
