@@ -1,27 +1,11 @@
+import { hashPassword } from '@/app/api/server-util';
 import { prisma } from '@/lib/prisma';
 import { UserCreateInputSchema } from '@/prisma/generated/zod';
-import { pbkdf2 } from 'node:crypto';
-
-async function hashPassword(password: string): Promise<string> {
-  return new Promise<string>((resolve, reject) => {
-    pbkdf2(password, 'salt', 100000, 64, 'sha512', (err, derivedKey) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(derivedKey.toString('hex'));
-    });
-  });
-}
 
 export async function POST(request: Request) {
   try {
-    const formData = await request.formData();
-    const parseResult = UserCreateInputSchema.safeParse({
-      email: formData.get('email'),
-      password: formData.get('password'),
-      name: formData.get('name'),
-      userId: formData.get('userId'),
-    });
+    const body = await request.json();
+    const parseResult = UserCreateInputSchema.safeParse(body);
 
     if (!parseResult.success) {
       return new Response(JSON.stringify(parseResult.error), {
@@ -42,7 +26,7 @@ export async function POST(request: Request) {
       status: 201,
     });
   } catch (error) {
-    return new Response('Internal Server Error', {
+    return new Response(null, {
       status: 500,
     });
   }

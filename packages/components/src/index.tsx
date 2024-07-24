@@ -26,3 +26,14 @@ export {
 } from "./components/shadcn/card";
 export { Label } from "./components/shadcn/label";
 export { Input, type InputProps } from "./components/shadcn/input";
+export {
+  Form,
+  Form as ShadcnForm,
+  useFormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  FormField,
+} from "./components/shadcn/form";
