@@ -15,10 +15,8 @@ function ReduxProvider(
   const storeRef = React.useRef<AppStore | null>(null);
   if (!storeRef.current) {
     storeRef.current = makeStore();
-    storeRef.current.dispatch(
-      authActions.setSession({ session: props.session }),
-    );
   }
+  storeRef.current.dispatch(authActions.setSession({ session: props.session }));
 
   return <Provider store={storeRef.current}>{props.children}</Provider>;
 }
@@ -36,7 +34,7 @@ export default function Providers(
     <ReduxProvider session={props.session}>
       <ThemeProvider
         attribute="class"
-        defaultTheme="system"
+        defaultTheme="light"
         enableSystem
         disableTransitionOnChange
       >

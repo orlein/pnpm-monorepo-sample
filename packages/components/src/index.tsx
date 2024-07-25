@@ -83,3 +83,4 @@ export {
   TabsTrigger,
 } from "./components/shadcn/tabs";
 export { Separator } from "./components/shadcn/separator";
+export { Checkbox } from "./components/shadcn/checkbox";
