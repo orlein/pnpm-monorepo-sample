@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { authActions, AuthState } from "@/lib/features/auth/authSlice";
-import { AppStore, makeStore } from "@/lib/store";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { type ThemeProviderProps } from "next-themes/dist/types";
-import * as React from "react";
-import { Provider } from "react-redux";
+import { authActions, AuthState } from '@/lib/features/auth/authSlice';
+import { AppStore, makeStore } from '@/lib/store';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
+import { type ThemeProviderProps } from 'next-themes/dist/types';
+import * as React from 'react';
+import { Provider } from 'react-redux';
 
 type InitialReduxProviderProps = AuthState;
 
 function ReduxProvider(
-  props: React.PropsWithChildren<InitialReduxProviderProps>
+  props: React.PropsWithChildren<InitialReduxProviderProps>,
 ) {
   const storeRef = React.useRef<AppStore | null>(null);
   if (!storeRef.current) {
     storeRef.current = makeStore();
     storeRef.current.dispatch(
-      authActions.setSession({ session: props.session })
+      authActions.setSession({ session: props.session }),
     );
   }
 
@@ -30,7 +30,7 @@ function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 export type ProvidersProps = InitialReduxProviderProps;
 
 export default function Providers(
-  props: React.PropsWithChildren<ProvidersProps>
+  props: React.PropsWithChildren<ProvidersProps>,
 ) {
   return (
     <ReduxProvider session={props.session}>
